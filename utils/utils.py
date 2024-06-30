@@ -32,7 +32,6 @@ def match_overlay(image, templateGray, kpsB, descsB, orb, overlay_image_path = '
 
     # Return original frame if sufficient matches are not found
     if len(matches) < top_matches:
-        print("......returning due to less matches........")
         return image
 
     # keep only the 'top_matches' no. of matches for better homography estimation
@@ -60,11 +59,9 @@ def match_overlay(image, templateGray, kpsB, descsB, orb, overlay_image_path = '
         (homography, _) = cv2.findHomography(ptsB, ptsA, method=cv2.RANSAC, ransacReprojThreshold=2)
 
     except:
-        print("......returning due to exception........")
         return image
     
     if homography is None:
-        print("......returning due to no homography........")
         return image
     
     (imgH,imgW)= image.shape[:2]
@@ -94,11 +91,9 @@ def match_overlay(image, templateGray, kpsB, descsB, orb, overlay_image_path = '
         output = cv2.add(warpedMultiplied, imageMultiplied)
         output = output.astype("uint8")
         
-        print("......returning Normal images........")
         return output
     
     except:
-        print("......returning due to exception 2........")
         return image
 
     
