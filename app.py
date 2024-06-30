@@ -24,7 +24,7 @@ if __name__ == "__main__":
         # frame = cv2.flip(frame,1)
 
         output = match_overlay(image=frame, templateGray=templateGray, kpsB=kpsB, descsB=descsB, orb=orb)
-        print(f"######## output = {output.shape}")
+        # print(f"######## output = {output.shape}")
         cv2.imshow("AR Overlay", output)
 
         # cv2.imshow("Overlay of the Aligned Images", overlay)
